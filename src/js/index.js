@@ -1,9 +1,22 @@
 
 
+const responseDiv = document.getElementById("response");
+const prevChatDiv = document.getElementById("prevChat");
+
 submitButton.addEventListener("click", async () => {
   const input = userInput.value.trim();
 
 //   console.log(input);
+
+  if (input === "") {
+    return;
+  }
+
+  // Display the user's input
+  prevChatDiv.innerHTML = `<p>${input}</p>`;
+
+  // Clear the input field
+  userInput.value = "";
 
   // Send input to the backend
   const res = await fetch("/api/chat", {
@@ -18,7 +31,8 @@ submitButton.addEventListener("click", async () => {
 
   // Display the response
   if (data.response) {
-    responseDiv.innerText = data.response;
+    console.log(data.response);
+    responseDiv.innerHTML = `<p>${data.response}</p>`;
   } else {
     responseDiv.innerText = "Error: Unable to fetch response.";
   }

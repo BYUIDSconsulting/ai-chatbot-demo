@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const MarkdownIt = require("markdown-it");
+const md = new MarkdownIt();
+
 
 require("dotenv").config();
 
@@ -35,6 +38,7 @@ app.post("/api/chat", async (req, res) => {
       let result;
       try {
         result = await chatSession.sendMessage(message);
+        // result = md.render(result.response.text());
         console.log("AI Response:", result);
       } catch (error) {
         console.error("Error during sendMessage:", error);
