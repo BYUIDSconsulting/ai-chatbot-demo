@@ -1,0 +1,29 @@
+{
+  "name": "byu-ai-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/JakeZalesny/BYU-AI-TEST"
+  },
+  "author": "Jake Zalesny",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "ejs-lint": "^2.0.1",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "markdown-it": "^14.1.0",
+    "marked": "^15.0.6",
+    "nodemon": "^3.1.9",
+    "path": "^0.12.7"
+  }
+}
