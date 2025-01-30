@@ -32,7 +32,7 @@ submitButton.addEventListener("click", async () => {
   // Display the response
   if (data.response) {
     console.log(data.response);
-    responseDiv.innerHTML = `<p>${data.response}</p>`;
+    responseDiv.innerHTML = `${data.response}`;
   } else {
     responseDiv.innerText = "Error: Unable to fetch response.";
   }

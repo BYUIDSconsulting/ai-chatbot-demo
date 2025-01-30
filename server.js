@@ -46,7 +46,8 @@ app.post("/api/chat", async (req, res) => {
       }
   
       if (result && result.response && result.response.text) {
-        return res.json({ response: result.response.text() });
+        let translatedResponse = md.render(result.response.text());
+        return res.json({ response: translatedResponse });
       } else {
         return res.status(500).json({ error: "Invalid response from AI model" });
       }
