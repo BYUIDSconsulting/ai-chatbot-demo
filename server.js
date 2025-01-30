@@ -14,7 +14,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5500;
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-2.0-flash-exp",
+    model: "learnlm-1.5-pro-experimental",
     systemInstruction: "Respond to me like a TA for a class",
   });
   
