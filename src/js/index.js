@@ -37,3 +37,36 @@ submitButton.addEventListener("click", async () => {
     responseDiv.innerText = "Error: Unable to fetch response.";
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fileInput = document.getElementById("fileInput");
+  const uploadButton = document.getElementById("uploadButton");
+
+  uploadButton.addEventListener("click", async () => {
+    
+    if (fileInput.files.length === 0) {
+      alert("Please select a file to upload.");
+      return;
+  }
+
+  const file = fileInput.files[0];
+  const formData = new FormData();
+  formData.append("file", file);
+
+  if (response.ok) {
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      alert("File uploaded successfully!");
+    } else {
+      alert("Error uploading file.");
+    }
+  } else {
+    alert("Error uploading file.");
+  }
+  });
+});
+
