@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const responseDiv = document.getElementById("response");
-  const prevChatDiv = document.getElementById("prevChat");
+  const chatDiv = document.getElementById("chatContainer");
   const userInput = document.getElementById("userInput");
   const submitButton = document.getElementById("submitButton");
   const fileInput = document.getElementById("fileInput");
@@ -14,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Display the user's input
-    prevChatDiv.innerHTML += `<p>${input}</p>`;
+    chatDiv.innerHTML += `
+    <div id="userInput">
+    <p>${input}</p>
+    </div>`;
 
     // Clear the input field
     userInput.value = "";
@@ -34,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // Display the response
       if (data.response) {
         console.log(data.response);
-        responseDiv.innerHTML += `<p>${data.response}</p>`;
+        chatDiv.innerHTML += `<div id="aiResponse">${data.response}</div>`;
       } else {
-        responseDiv.innerText = "Error: Unable to fetch response.";
+        chatDiv.innerText = "Error: Unable to fetch response.";
       }
     } catch (error) {
       console.error("Error:", error);
-      responseDiv.innerText = "Error: Unable to fetch response.";
+      chatDiv.innerText = "Error: Unable to fetch response.";
     }
   }
 
@@ -58,30 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Handle file upload button click
-  uploadButton.addEventListener("click", async () => {
-    if (fileInput.files.length === 0) {
-      alert("Please select a file to upload.");
-      return;
-    }
+  uploadButton.addEventListener("click", () => {
+    fileInput.click(); // Simulates a click on the hidden input
+});
+
+fileInput.addEventListener("change", async () => {
+    if (fileInput.files.length === 0) return; // No file selected
 
     const file = fileInput.files[0];
     const formData = new FormData();
     formData.append("file", file);
 
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+        const response = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+        });
 
-      if (response.ok) {
-        alert("File uploaded successfully!");
-      } else {
-        alert("Error uploading file.");
-      }
+        if (response.ok) {
+            alert("File uploaded successfully!");
+        } else {
+            alert("Error uploading file.");
+        }
     } catch (error) {
-      console.error("File upload error:", error);
-      alert("Error uploading file.");
+        console.error("File upload error:", error);
+        alert("Error uploading file.");
     }
-  });
+});
 });

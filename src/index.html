@@ -11,17 +11,14 @@
         <header>
         <img src="/images/BYUI-Logo.png" alt="BYUI Logo">
         </header>
-        <div id="prevChat"></div>
-        <div id="response"></div>
-        <div id="chat">
-            <input id="userInput" placeholder="Type your message here..."></input>
-            <button id="submitButton">&rAarr;</button>
-        </div>
-
-        <div id="upload">
-            <input type="file" id="fileInput">
-            <button id="uploadButton">Upload</button>
-        </div>
+        <div id="chatContainer"></div>
+            <div id="chat">
+                <label for="fileInput" id="uploadButton">📎</label>
+                <input type="file" id="fileInput" hidden>
+                
+                <input id="userInput" placeholder="Type your message here..."></input>
+                <button id="submitButton">&uArr;</button>
+            </div>
 
         <script src="/js/index.js" type="module" defer></script>
     </body>
