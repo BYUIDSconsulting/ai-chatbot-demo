@@ -25,11 +25,34 @@
                 <ul>
                     <li><a href="/"><li><i data-feather="message-circle"></i> New Chat</li></a>
                     <li><i data-feather="clock"></i> History</li>
-                    <li><i data-feather="settings"></i> Settings</li>
+                    <li id="modalButton"><i data-feather="settings"></i> Settings</li>
                 </ul>
                 <div class="sidebar-previous-chats"></div>
             </div>
         </div>
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Settings</h2>
+
+                <!-- Model Selection -->
+                <label for="modelSelect">Select Model:</label>
+                <select id="modelSelect">
+                    <option value="gpt-3.5">GPT-3.5</option>
+                    <option value="gpt-4">GPT-4</option>
+                    <option value="custom">Custom Model</option>
+                </select>
+
+                <!-- Instructions Input -->
+                <label for="instructions">Custom Instructions:</label>
+                <textarea id="instructions" placeholder="Enter custom instructions..."></textarea>
+
+                <!-- Save Button -->
+                <button id="saveSettings">Save</button>
+            </div>
+        </div>
+
         <div id="chatContainer"></div>
             <div id="chat">
                 <label for="fileInput" id="uploadButton">📎</label>

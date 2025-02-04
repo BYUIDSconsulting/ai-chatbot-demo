@@ -6,6 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const uploadButton = document.getElementById("uploadButton");
   const sidebar = document.getElementById("sidebar");
   const toggleBtn = document.getElementById("toggleSidebar");
+  const modal = document.getElementById("modalButton");
+  const modalContent = document.querySelector(".modal");
+  const closeModal = document.querySelector(".close");
+
+  modal.addEventListener("click", () => {
+    console.log("modal clicked");
+    modalContent.style.display = "block";
+    console.log(modalContent.style.display);
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
 
   toggleBtn.addEventListener("click", () => {
       sidebar.classList.toggle("collapsed");
