@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitButton = document.getElementById("submitButton");
   const fileInput = document.getElementById("fileInput");
   const uploadButton = document.getElementById("uploadButton");
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("toggleSidebar");
+
+  toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+  });
+
+  // Load icons
+  feather.replace();
 
   async function sendMessage() {
     const input = userInput.value.trim(); // Get input value inside function
@@ -35,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Display the response
       if (data.response) {
-        console.log(data.response);
+        // console.log(data.response);
         chatDiv.innerHTML += `<div id="aiResponse">${data.response}</div>`;
       } else {
         chatDiv.innerText = "Error: Unable to fetch response.";

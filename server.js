@@ -38,6 +38,7 @@ app.post("/api/chat", async (req, res) => {
       let result;
       try {
         result = await chatSession.sendMessage(message);
+        console.log("History:", chatSession.getHistory());
         // result = md.render(result.response.text());
         console.log("AI Response:", result);
       } catch (error) {
