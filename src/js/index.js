@@ -9,21 +9,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modalButton");
   const modalContent = document.querySelector(".modal");
   const closeModal = document.querySelector(".close");
+  const modelSelect = document.getElementById("modelSelect");
+  const instructions = document.getElementById("instructions");
+  const saveSettings = document.getElementById("saveSettings");
 
-  modal.addEventListener("click", () => {
-    console.log("modal clicked");
-    modalContent.style.display = "block";
-    console.log(modalContent.style.display);
-  });
-
-  closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-  toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("collapsed");
-  });
-
+    // Open modal
+    modalButton.addEventListener("click", () => {
+      modalContent.style.display = "block";
+    });
+  
+    // Close modal when clicking the close button
+    closeModal.addEventListener("click", () => {
+      modalContent.style.display = "none";
+    });
+  
+    // Close modal when clicking outside of it
+    window.addEventListener("click", (event) => {
+      if (event.target === modalContent) {
+          modalContent.style.display = "none";
+      }
+    });
   // Load icons
   feather.replace();
 
@@ -109,4 +114,44 @@ fileInput.addEventListener("change", async () => {
         alert("Error uploading file.");
     }
 });
+
+saveSettings.addEventListener("click", () => {
+  changeModel();
+  modalContent.style.display = "none";
+  console.log("Settings saved");
+});
+
+saveSettings.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        changeModel();
+        modalContent.style.display = "none";
+    }
+});
+
+// Change the Model
+  async function changeModel() {
+    const modelType = modelSelect.value;
+    const instructionsValue = instructions.value;
+
+    try {
+      const response = await fetch("/api/settings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ modelType: modelType, instructions: instructionsValue }),
+      });
+
+      if (response.ok) {
+        alert("Instructions updated successfully!");
+      } else {
+        alert("Error updating model.");
+      }
+    } catch (error) {
+      console.error("Instructions error:", error);
+      alert("Error changing instructions.");
+    }
+  
+  }
 });

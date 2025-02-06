@@ -13,7 +13,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 app.use(express.json());
 const PORT = process.env.PORT || 5500;
 
-const model = genAI.getGenerativeModel({
+let model = genAI.getGenerativeModel({
     model: "learnlm-1.5-pro-experimental",
     systemInstruction: "Respond to me like a TA for a class",
   });
@@ -25,6 +25,23 @@ const generationConfig = {
     maxOutputTokens: 8192,
     responseMimeType: "text/plain",
 };
+
+// API route to handle model settings
+app.post("/api/settings", async (req, res) => {
+    try {
+      const { modelType, instructions } = req.body;
+  
+      model = genAI.getGenerativeModel({
+        model: modelType,
+        systemInstruction: instructions,
+      });
+  
+      return res.json({ success: true });
+    } catch (error) {
+      console.error("Error during settings update:", error);
+      res.status(500).json({ error: "Failed to update model settings" });
+    }
+  });
 
 // API route to handle chat requests
 app.post("/api/chat", async (req, res) => {
