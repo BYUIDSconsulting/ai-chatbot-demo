@@ -1,0 +1,239 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    width: 100%;
+    text-align: left;
+}
+
+header img {
+    height: 100px;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Chat Container */
+#chatContainer {
+    width: 60%;
+    height: 70vh;
+    background: white;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Message Styles */
+.message {
+    max-width: 80%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #007BFF;
+    color: white;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #e5e5e5;
+    color: black;
+}
+
+/* Chat Input Area */
+#chat {
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    justify-content: space-between; 
+}
+
+#chatContainer {
+    width: 60%; /* Take full width */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align responses to the right */
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: auto;
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+#aiResponse {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    margin-left: auto;
+    justify-content: flex-end; /* Ensures text is right-aligned */
+    align-items: flex-end;
+}
+
+#submitButton, #uploadButton {
+    padding: 10px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submitButton:hover, #uploadButton:hover {
+    background: #0056b3;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Sidebar Collapsed */
+#sidebar.collapsed {
+    width: 60px;
+}
+
+/* Sidebar Toggle Button */
+#toggleSidebar {
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: left;
+}
+
+/* Sidebar Content */
+.sidebar-content {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.sidebar-content img {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+/* Sidebar List */
+.sidebar-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-content ul li {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.sidebar-content ul li:hover {
+    background: rgb(198, 195, 195);
+}
+
+.sidebar-content ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Collapsed Sidebar Behavior */
+#sidebar.collapsed .sidebar-content img,
+#sidebar.collapsed .sidebar-content{
+    display: none;
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    width: 40%;
+    padding: 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Form Elements */
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Save Button */
+#saveSettings {
+    margin-top: 10px;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
