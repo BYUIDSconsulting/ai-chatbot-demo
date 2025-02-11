@@ -45,6 +45,7 @@
                     <option value="gemini-2.0-flash-thinking-exp-01-21">Gemini 2.0 Flash Thinking</option>
                 </select>
 
+
                 <!-- Instructions Input -->
                 <label for="instructions">Custom Instructions:</label>
                 <textarea id="instructions" placeholder="Enter custom instructions..."></textarea>
@@ -53,13 +54,16 @@
                 <button id="saveSettings">Save</button>
             </div>
         </div>
-
+        
+        <!--TODO: Add premade instructions/prompts-->
+        <!--TODO: Gems has prebuilt instructions that are like paragraphs. Take a look into those / have Tyson send them--> 
+        <!-- Chat Container -->
         <div id="chatContainer"></div>
             <div id="chat">
                 <label for="fileInput" id="uploadButton">📎</label>
                 <input type="file" id="fileInput" hidden>
                 
-                <input id="userInput" placeholder="Type your message here..."></input>
+                <textarea id="userInput" placeholder="Type your message here..."></textarea>
                 <button id="submitButton">&uArr;</button>
         </div>
 
